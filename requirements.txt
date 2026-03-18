@@ -2,7 +2,7 @@ pandas
 numpy
 scikit-learn
 xgboost
-streamlit
+streamlit>=1.35.0
 plotly
 tensorflow
 keras
