@@ -148,8 +148,8 @@ else:
 
 st.sidebar.header("📱 Alert Configurations")
 st.sidebar.markdown("*For real Telegram/Email alerts, enter details below:*")
-telegram_token = st.sidebar.text_input("Telegram Bot Token (Optional)", type="password")
-telegram_chat_id = st.sidebar.text_input("Telegram Chat ID (Optional)")
+telegram_token = st.sidebar.text_input("Telegram Bot Token (Optional)", type="password").strip()
+telegram_chat_id = st.sidebar.text_input("Telegram Chat ID (Optional)").strip()
 
 # Audio playback function
 def play_audio(audio_ph):
