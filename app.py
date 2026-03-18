@@ -188,7 +188,7 @@ def send_alert(message):
         except Exception as e:
             st.toast(f"Telegram Failed: {str(e)}", icon="❌")
 
-tab1, tab2, tab3 = st.tabs(["Live Grid Monitoring", "Model Analytics", "Anomaly Log"])
+tab1, tab2 = st.tabs(["Live Grid Monitoring", "Anomaly Log"])
 
 with tab1:
     st.subheader("Live Network Feed Simulation")
@@ -214,7 +214,7 @@ with tab1:
 
     if run_sim and not stop_sim:
         # Pre-initialize the log container BEFORE the loop so it's globally available for updates
-        with tab3:
+        with tab2:
             st.subheader("Live System Alert Logs")
             st.markdown("Automated grid warnings and threshold breaches are cataloged here in real-time.")
             log_table_ph = st.empty()
@@ -370,27 +370,5 @@ with tab1:
             
             time.sleep(sim_speed)
 
-with tab2:
-    st.subheader("Machine Learning Performance")
-    st.markdown("""
-    This section validates the architecture presented in the IEEE paper. 
-    By employing **Bidirectional LSTM** for time-series forecasting and **XGBoost/Isolation Forest** for classification 
-    and anomaly detection, the system achieves a strong predictive layer avoiding pure theoretical approaches.
-    """)
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        if os.path.exists("lstm_architecture.png"):
-            st.image("lstm_architecture.png", width=300, caption="LSTM Architecture Logic")
-        else:
-            st.info("Architecture diagram not found.")
-    with col2:
-        st.markdown("""
-        ### Target Metrics
-        - **Bi-LSTM MAE (Mean Absolute Error):** Very low (validated in console output during training).
-        - **XGBoost Accuracy:** High precision on peak classification.
-        - **Optimization:** Scaling enabled stable convergence across the Deep Learning nodes.
-        """)
-        
-# Tab 3 logic has been moved inside the sim block above so it updates dynamically.
+# The Anomaly Log tab (previously tab 3) logic has been moved inside the sim block above so it updates dynamically.
 
