@@ -229,7 +229,7 @@ with tab1:
         predicted = []
         last_alarm_time = 0 # Initialize cooldown timer
         
-        simulation_start_time = pd.Timestamp.now().floor('H')
+        simulation_start_time = pd.Timestamp.now().floor('h')
         
         for i in range(start_index, start_index + sim_steps): # Run for configured steps
             if i + 25 >= len(raw_data):
